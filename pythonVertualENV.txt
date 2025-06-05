@@ -1,0 +1,93 @@
+Scenario: Two Different Python Projects
+Suppose you are working on two separate projects:
+
+Project A: A Flask web app
+
+Project B: A Data Science tool using Pandas and NumPy
+
+You want to keep their dependencies isolated.
+
+✅ Step-by-Step Guide
+🔹 Step 1: Create folders for your projects
+bash
+Copy
+Edit
+mkdir projectA
+mkdir projectB
+🔹 Step 2: Create a virtual environment inside each project
+bash
+Copy
+Edit
+cd projectA
+python3 -m venv venv  # Creates 'venv' folder inside projectA
+
+cd ../projectB
+python3 -m venv venv  # Creates 'venv' folder inside projectB
+You now have:
+
+Copy
+Edit
+projectA/
+├── venv/
+└── (your Python files)
+
+projectB/
+├── venv/
+└── (your Python files)
+🔹 Step 3: Activate the virtual environment for each project
+✅ For Project A:
+bash
+Copy
+Edit
+cd projectA
+source venv/bin/activate  # On Linux/macOS
+# OR
+venv\Scripts\activate     # On Windows
+
+# Now install packages for this project only
+pip install flask
+✅ For Project B:
+bash
+Copy
+Edit
+cd projectB
+source venv/bin/activate  # Linux/macOS
+# OR
+venv\Scripts\activate     # Windows
+
+# Install different packages here
+pip install pandas numpy
+🔹 Step 4: Check installed packages (optional)
+bash
+Copy
+Edit
+pip list
+Each project will only show the packages you installed for that specific virtual environment.
+
+🔹 Step 5: Deactivate when you're done
+bash
+Copy
+Edit
+deactivate
+This returns your terminal to the global Python environment.
+
+🧠 Summary Table
+Project	Virtual Env Directory	Packages Installed
+projectA	projectA/venv/	Flask
+projectB	projectB/venv/	Pandas, NumPy
+
+Each project can now grow with no conflict.
+
+📝 Bonus Tip: Share your environment
+To share your project's dependencies:
+
+bash
+Copy
+Edit
+pip freeze > requirements.txt
+And someone else can recreate the same environment using:
+
+bash
+Copy
+Edit
+pip install -r requirements.txt

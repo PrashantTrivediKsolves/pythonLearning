@@ -1,0 +1,62 @@
+Reading from a File
+✅ Using read():
+
+f = open("example.txt", "r")
+content = f.read()
+print(content)
+f.close()
+Always call f.close() when done (unless you use a context manager — see below 👇)
+
+🔹 3. Writing to a File
+
+
+f = open("example.txt", "w")
+f.write("Hello, world!\n")
+f.write("Writing another line.")
+f.close()
+If the file exists, it overwrites it. If not, it creates one.
+
+✅ 4. Using with Statement (Context Manager)
+Best practice: automatically closes the file after the block ends.
+
+Reading:
+
+with open("example.txt", "r") as f:
+    content = f.read()
+    print(content)
+Writing:
+
+with open("example.txt", "w") as f:
+    f.write("Hello from 'with' block!")
+Appending:
+
+with open("example.txt", "a") as f:
+    f.write("\nNew line added.")
+🧪 Example: Full Round
+
+# Write to a file
+with open("data.txt", "w") as f:
+    f.write("This is the first line.\n")
+    f.write("This is the second line.")
+
+# Read from the file
+with open("data.txt", "r") as f:
+    content = f.read()
+    print("File contents:\n", content)
+🔥 Bonus: Other Read Methods
+
+
+Method	Description
+f.read()	Read whole file
+f.readline()	Read one line
+f.readlines()	Returns list of lines
+
+
+
+
+Quick Recap :----------
+Function	Use Case
+json.load(f)	Read JSON from a file
+json.dump(obj, f)	Write JSON to a file
+json.loads(s)	Parse JSON string to Python object
+json.dumps(obj)	Convert Python object to string
